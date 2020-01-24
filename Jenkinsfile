@@ -1,6 +1,6 @@
 node {
 
-   stage('Preparing webhook') {
+   stage('Preparing webhooki test') {
 
       }
          stage('test') {
