@@ -3,7 +3,7 @@ node {
    stage('Preparing webhooki test') {
 
       }
-         stage('test') {
+         stage('test pipe') {
 
 	      }
 
