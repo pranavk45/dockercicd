@@ -1,6 +1,7 @@
 node {
-   def commit_id
-   stage('Preparation Checkout SCM') {
+  // def commit_id
+   def imageTag = "gcr.io/${env.BUILD_NUMBER}"
+   stage('Preparation Checkopt SCM') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
@@ -8,7 +9,7 @@ node {
 
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-       def app = docker.build("pranavk45/dockercicd:${commit_id}", '.').push()
+       def app = docker.build("pranavk45/dockercicd:${imageTag}", '.').push()
      }
    }
       stage('test') {
