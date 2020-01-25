@@ -1,31 +1,18 @@
-  
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 8082:3000'
-        }
-    }
-    environment { 
-        CI = 'true'
-    }
-    stages {
-        stage('Build test') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
-            }
-        }
-    }
+node {
+   def commit_id
+   stage('Preparation Checkopt SCM') {
+     checkout scm
+     sh "git rev-parse --short HEAD > .git/commit-id"                        
+     commit_id = readFile('.git/commit-id').trim()
+   }
+
+   stage('docker build/push') {
+     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+       def app = docker.build("pranavk45/dockercicd:${commit_id}", '.').push()
+     }
+   }
+      stage('test') {
+       sh 'curl localhost:80'
+
+   }
 }
