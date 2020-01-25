@@ -1,5 +1,6 @@
 node {
   // def commit_id
+ //  def imagename= "httpd"
    def imageTag = "${env.BUILD_NUMBER}"
    stage('Preparation Checkopt SCM') {
      checkout scm
@@ -9,7 +10,7 @@ node {
 
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-       def app = docker.build("pranavk45/dockercicd:${imageTag}", '.').push()
+       def app = docker.build("pranavk45/httpd:${imageTag}", '.').push()
      }
    }
 //      stage('test') {
