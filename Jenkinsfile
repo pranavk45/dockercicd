@@ -1,6 +1,5 @@
 node {
   // def commit_id
-  // def commit_id
  //  def imagename= "httpd"
    def imageTag = "${env.BUILD_NUMBER}"
    stage('Preparation Checkopt SCM') {
