@@ -12,8 +12,8 @@ node {
        def app = docker.build("pranavk45/dockercicd:${imageTag}", '.').push()
      }
    }
-      stage('test') {
-       sh 'curl localhost:80'
+//      stage('test') {
+ //      sh 'curl localhost:80'
 
-   }
+//   }
 }
