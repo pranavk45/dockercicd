@@ -22,6 +22,6 @@ node {
   sh 'kubectl apply -f /home/httpdtesting/httpdservice.yml'
 }
         stage('test') {
-      sh 'curl localhost:80'
+      sh 'curl localhost:30008'
   }
 }
