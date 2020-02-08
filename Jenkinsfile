@@ -1,8 +1,9 @@
 node {
   // def commit_id
  //  def imagename= "httpd"
+  //
     imageTag = "${env.BUILD_NUMBER}"
-   stage('Preparation Checkopt SCM') {
+   stage('Checkout SCM') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
