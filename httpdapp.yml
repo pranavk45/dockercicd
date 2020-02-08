@@ -1,3 +1,7 @@
+apiVersion: apps/v1
+# we manage replicasets through Deployment
+# Deployment is used for rolling updates
+# At any point of time while updating the image deployment will make sure at least 1 webapp is responding to requests.
 kind: Deployment
 metadata:
 # this will create a replica set with name webapp followed by random string
