@@ -24,4 +24,4 @@ node {
 //        stage('test') {
 //      sh 'curl localhost:'
 //  }
-//}
+}
