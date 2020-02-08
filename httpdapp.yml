@@ -1,0 +1,24 @@
+kind: Deployment
+metadata:
+# this will create a replica set with name webapp followed by random string
+  name: webapp
+spec:
+  #Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+  minReadySeconds: 30
+  selector:
+    # matchLabels is requireed when using replicaset [while in service we directly mention labels under selector]
+    matchLabels:
+      app: webapp
+#      release: "0-5"
+  replicas: 2
+  template: # below is template for pod
+    metadata:
+      # this below name is pods name this is not needed anymore because replicaset will name it automatically . the pods name willbe name of the replicaset followed by some random series of characters.
+      #name: webapp
+      labels:
+        app: webapp
+#        release: "0-5"
+    spec:
+      containers:
+        - name: webapp-release-0
+          image: pranavk45/httpd:{{imageTag}}
