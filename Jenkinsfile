@@ -18,10 +18,10 @@ node {
 
 //   }
   stage('Deploying in k8s') {
-  sh 'cat /home/httpdtesting/httpdapp.yml | sed "s/{{imageTag}}/$imageTag/g" | kubectl apply -f -'
-  sh 'sudo kubectl apply -f /home/httpdtesting/httpdservice.yml'
+  sh 'cat /home/kubhttpd/httpdapp.yml | sed "s/{{imageTag}}/$imageTag/g" | kubectl apply -f -'
+  sh 'sudo kubectl apply -f /home/kubhttpd/httpdservice.yml'
 }
-        stage('test') {
-      sh 'curl localhost:30008'
-  }
-}
+//        stage('test') {
+//      sh 'curl localhost:'
+//  }
+//}
