@@ -1,6 +1,7 @@
 node {
   // def commit_id
  //  def imagename= "httpd"
+  //
     imageTag = "${env.BUILD_NUMBER}"
    stage('Checkout SCM') {
      checkout scm
