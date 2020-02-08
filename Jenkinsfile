@@ -21,7 +21,7 @@ node {
     //sh 'cat /home/kubhttpd/httpdapp.yml | sed "s/{{imageTag}}/"${imageTag}"/g" | kubectl apply -f -'
     sh "chmod +x auto.sh "
     sh "./auto.sh ${imageTag}"
-    sh 'kubectl apply -f /home/kubhttpd/httpdservice.yaml'
+    sh 'kubectl apply -f httpdservice.yaml'
 }
 //        stage('test') {
 //      sh 'curl localhost:'
