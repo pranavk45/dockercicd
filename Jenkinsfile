@@ -18,7 +18,7 @@ node {
 
 //   }
   stage('Deploying in k8s') {
-  sh 'cat /home/kubhttpd/httpdapp.yml | sed "s/{{imageTag}}/$imageTag/g" | kubectl apply -f -'
+  sh 'cat /home/kubhttpd/httpdapp.yml | sed "s/imageTag/$imageTag/g" | kubectl apply -f -'
   sh 'sudo kubectl apply -f /home/kubhttpd/httpdservice.yaml'
 }
 //        stage('test') {
