@@ -8,5 +8,5 @@ spec:
   ports:
     - name: httpd
       port: 80
-      nodePort: 30010
+      nodePort: 31001
   type: NodePort
